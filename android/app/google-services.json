@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "997071068757",
+    "project_id": "expsharechat-8b765",
+    "storage_bucket": "expsharechat-8b765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997071068757:android:2a52a228453b2d84c6fedc",
+        "android_client_info": {
+          "package_name": "com.example.expsharechat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmUcpphqgFGqbT6HYR_yGf9U_0ypiBYpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
