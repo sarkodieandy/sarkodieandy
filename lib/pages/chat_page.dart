@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 // Widgets
@@ -34,6 +37,7 @@ class _ChatPageState extends State<ChatPage> {
 
   late GlobalKey<FormState> _messageFormState;
   late ScrollController _messagesListViewController;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
@@ -164,6 +168,10 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
           IconButton(
+            icon: const Icon(Icons.photo),
+            onPressed: _pickAndSendImage,
+          ),
+          IconButton(
             icon: const Icon(Icons.send),
             onPressed: () {
               if (_messageFormState.currentState!.validate()) {
@@ -176,5 +184,17 @@ class _ChatPageState extends State<ChatPage> {
         ],
       ),
     );
+  }
+
+  Future<void> _pickAndSendImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      File imageFile = File(pickedFile.path);
+      String? imageUrl = await _pageProvider.uploadImage(imageFile);
+      if (imageUrl != null) {
+        await _pageProvider.sendMessage(imageUrl: imageUrl, isImage: true);
+      }
+    }
   }
 }

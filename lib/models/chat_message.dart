@@ -9,14 +9,15 @@ enum MessageType {
 class ChatMessage {
   final String senderID;
   final MessageType type;
-  final String content;
+  final String content; // This can be the text or image URL
   final DateTime sentTime;
 
-  ChatMessage(
-      {required this.content,
-      required this.type,
-      required this.senderID,
-      required this.sentTime});
+  ChatMessage({
+    required this.content,
+    required this.type,
+    required this.senderID,
+    required this.sentTime,
+  });
 
   factory ChatMessage.fromJSON(Map<String, dynamic> json) {
     MessageType messageType;
@@ -34,7 +35,7 @@ class ChatMessage {
       content: json["content"],
       type: messageType,
       senderID: json["sender_id"],
-      sentTime: json["sent_time"].toDate(),
+      sentTime: (json["sent_time"] as Timestamp).toDate(),
     );
   }
 
@@ -48,7 +49,7 @@ class ChatMessage {
         messageType = "image";
         break;
       default:
-        messageType = "";
+        messageType = "unknown";
     }
     return {
       "content": content,
