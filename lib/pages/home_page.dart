@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //Pages
 import '../pages/chats_page.dart';
 import '../pages/users_page.dart';
+import '../pages/chat_screen.dart'; // Import your ChatScreen here
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const ChatsPage(),
     const UsersPage(),
+    const ChatScreen(), // Add ChatScreen to the list of pages
   ];
 
   @override
@@ -47,6 +49,12 @@ class _HomePageState extends State<HomePage> {
             label: "Users",
             icon: Icon(
               Icons.supervised_user_circle_sharp,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Chatbot", // Update the label to be more descriptive
+            icon: Icon(
+              Icons.chat, // Use a different icon for distinction
             ),
           ),
         ],

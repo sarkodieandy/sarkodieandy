@@ -107,11 +107,11 @@ class _ChatPageState extends State<ChatPage> {
       stream: _pageProvider.getMessagesStream(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return Center(child: Text('No messages yet'));
+          return const Center(child: Text('No messages yet'));
         } else {
           var messages = snapshot.data!.docs
               .map((doc) => ChatMessage.fromJSON(doc.data() as Map<String, dynamic>))
@@ -128,11 +128,11 @@ class _ChatPageState extends State<ChatPage> {
                 future: _pageProvider.getUserById(message.senderID),
                 builder: (context, userSnapshot) {
                   if (userSnapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (userSnapshot.hasError) {
                     return Center(child: Text('Error: ${userSnapshot.error}'));
                   } else if (!userSnapshot.hasData) {
-                    return Center(child: Text('User not found'));
+                    return const Center(child: Text('User not found'));
                   } else {
                     ChatUser sender = userSnapshot.data!;
                     return CustomChatListViewTile(

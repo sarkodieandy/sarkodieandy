@@ -21,6 +21,7 @@ class AuthenticationProvider extends ChangeNotifier {
     _navigationService = GetIt.instance.get<NavigationService>();
     _databaseService = GetIt.instance.get<DatabaseService>();
 
+
     _auth.authStateChanges().listen((firebaseUser) async {
       if (firebaseUser != null) {
         await _databaseService.updateUserLastSeenTime(firebaseUser.uid);

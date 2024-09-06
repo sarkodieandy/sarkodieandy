@@ -101,23 +101,23 @@ class CustomListViewTileWithActivity extends StatelessWidget {
       ),
       subtitle: isActivity
           ? Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SpinKitThreeBounce(
-                  color: Colors.white54,
-                  size: height * 0.10,
-                ),
-              ],
-            )
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SpinKitThreeBounce(
+            color: Colors.white54,
+            size: height * 0.10,
+          ),
+        ],
+      )
           : Text(
-              subtitle,
-              style: const TextStyle(
-                  color: Colors.white54,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400),
-            ),
+        subtitle,
+        style: const TextStyle(
+            color: Colors.white54,
+            fontSize: 12,
+            fontWeight: FontWeight.w400),
+      ),
     );
   }
 }
@@ -145,31 +145,31 @@ class CustomChatListViewTile extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment:
-            isOwnMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
+        isOwnMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           !isOwnMessage
               ? RoundedImageNetwork(
-                  key: UniqueKey(),
-                  imagePath: sender.imageURL,
-                  size: width * 0.08)
+              key: UniqueKey(),
+              imagePath: sender.imageURL,
+              size: width * 0.08)
               : Container(),
           SizedBox(
             width: width * 0.05,
           ),
           message.type == MessageType.TEXT
               ? TextMessageBubble(
-                  isOwnMessage: isOwnMessage,
-                  message: message,
-                  height: deviceHeight * 0.06,
-                  width: width,
-                )
+            isOwnMessage: isOwnMessage,
+            message: message,
+            height: deviceHeight * 0.06,
+            width: width,
+          )
               : ImageMessageBubble(
-                  isOwnMessage: isOwnMessage,
-                  message: message,
-                  height: deviceHeight * 0.30,
-                  width: width * 0.55,
-                ),
+            isOwnMessage: isOwnMessage,
+            message: message,
+            height: deviceHeight * 0.30,
+            width: width * 0.55,
+          ),
         ],
       ),
     );
